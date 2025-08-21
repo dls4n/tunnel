@@ -16,7 +16,7 @@ ATOM      2  H   FIL T1210     162.685 171.581 195.827        1.03
 
 
 water_profile.py:
-Code was developed in Python Bio.PDB module
+Code was developed in Python using the Bio.PDB module
 
 This program will create a list of water molecules that lie inside the cavity.
 
