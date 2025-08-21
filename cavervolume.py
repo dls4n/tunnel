@@ -46,6 +46,8 @@
 from __future__ import print_function
 import platform
 
+version = 1.0
+
 import sys
 import numpy as np
 
@@ -104,14 +106,19 @@ def estimate_union_volume(spheres, num_samples=1_000_000):
 
 if __name__ == "__main__":
 #    filename = "spheres.txt"  # Path to your input file
+    print("cavervolume version %s running under python vers: %s" % (version,platform.python_version()))
+    print("    This program will calculate internal volume of a cavity from CAVER Analyst")
+
     if len(sys.argv) < 2:
         print('usage: cavervolume.py filename.pdb')
-        sys.exit()
+        try: filename = raw_input('tunnel profile PDB file: ')   # this is for python2
+        except NameError: filename = input('tunnel profile PDB file: ')   # this is for python3
     else:
         filename = sys.argv[1]
     spheres = read_spheres_from_file(filename)
     if not spheres:
         print("No valid spheres found in the file.")
     else:
+        print("\n Calculating . . . (this might take a while) ")
         volume = estimate_union_volume(spheres, num_samples=1_000_000)
         print(f"Estimated internal volume: {volume:.4f} Angstrom^3")

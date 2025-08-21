@@ -42,10 +42,13 @@ from Bio.PDB import PDBIO
 warnings.filterwarnings('ignore')    # ignore all warnings
 #warnings.filterwarnings('ignore', message="Invalid or missing occupancy")
 
-print("water_profile running under python vers: %s" % platform.python_version())
+version = 1.0
+
+print("water_profile version %s running under python vers: %s" % (version,platform.python_version()))
+print("    This program will determine locations of water molecules lying inside a cavity determined by CAVER Analyst")
+
 if len(sys.argv) < 2:
-    print ('''         water_profile.py tunnel.pdb molecule.pdb
-   This program will determine locations of water molecules lying inside a CAVER cavity''')
+    print ('''usage:  water_profile.py tunnel.pdb molecule.pdb''')
 
     try: tunnelpdb = raw_input('tunnel profile PDB file: ')   # this is for python2
     except NameError: tunnelpdb = input('tunnel profile PDB file: ')   # this is for python3
